@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>Geolocation</title>
+	</head>
+
+	<a href="#"	 id="get_location">Get Location</a>
+	<div id="map">
+	<iframe id="google_map" src="https://www.google.com/maps/embed?" width="600" height="450" frameborder="0" style="border:0" target="_parent" ></iframe>
+
+	</div>
+	
+	
+	<script>
+		var c=function(position){
+			var lat=position.coords.latitude,
+				long=position.coords.longitude;
+		coords=lat+','+long;
+			var y=document.getElementById("google_map")
+			var x="https://maps.googleapis.com/maps/api/staticmap?center=" + coords + "&zoom=13&size=600x450&sensor=false";
+			var img=new Image();
+			img.src=x;
+			document.getElementById("map").replaceChild(img,y);
+	/*		document.getElementById("map").appendChild(img);*/
+			
+		}
+		document.getElementById("get_location").onclick=function(){
+			navigator.geolocation.getCurrentPosition(c);
+		}
+		  
+		</script>
+
+	
+	
+</html>
